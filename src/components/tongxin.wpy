@@ -1,0 +1,27 @@
+<template>
+    <view>
+        <view @tap="clickTongxin">tongxin</view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class extends wepy.component{
+    methods={
+        clickTongxin(){
+            //抛出自定义事件
+            this.$emit("tonxin:click",10,20);
+        }
+    }
+
+    getTongxinInfo(a,b){
+        console.log((a+b),"子组件tongxin的getTongxinInfo方法被调用了！");
+    }
+
+    events={
+        "otherparent:click":(a,b,$event)=>{
+            console.log(a+b);
+        }
+    }
+}
+</script>

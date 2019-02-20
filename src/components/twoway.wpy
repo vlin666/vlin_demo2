@@ -1,0 +1,65 @@
+<template>
+    <view>
+        <view>
+            title:{{title}}
+        </view>
+        <view>
+            syncTitle:{{syncTitle}}
+        </view>
+        <view>
+            twoWayTitle:{{twoWayTitle}}
+        </view>
+        <view>
+            num:{{num}}
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class extends wepy.component {
+    props={
+        title:String,
+        syncTitle:String,
+        twoWayTitle:{
+            type: String,
+            default: 'nothing',
+            twoWay: true
+        },
+        num:{
+            type:Number,
+            //twoWay:true
+        }
+    }
+
+    onLoad(){
+
+        // this.num = 100;
+        // this.$apply();
+        // console.log(this.$parent.num);
+
+        // this.$parent.num = 100;
+        // this.$parent.$apply();
+
+
+
+
+        //修改父亲的parentTitle数据
+        // this.$parent.parentTitle = "aaaaaaaaaa";
+        // this.$parent.$apply();//对于脏数据的处理
+        // console.log("syncTitle",this.syncTitle);
+
+
+        //修改twoway的数据
+        // this.twoWayTitle = "two-way-title";
+        // this.$apply();
+        // console.log("parentTitle",this.$parent.parentTitle);
+    
+        // this.title = "11111111111111"
+        // this.$apply();
+
+
+
+    }
+}
+</script>

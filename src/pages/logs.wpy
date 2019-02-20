@@ -1,0 +1,56 @@
+
+<style lang="less">
+
+</style>
+
+<template>
+    <view>
+        <view>
+            <view @tap="clickLog">{{log}}</view>
+            <logchild :title="logData"></logchild>
+        </view>
+        <view>
+            <twoway 
+                :title="parentTitle"
+                :syncTitle.sync="parentTitle"
+                :twoWayTitle="parentTitle"
+                :num.sync="num"
+            >
+            </twoway>   
+        </view>
+    </view>
+</template>
+
+
+<script>
+import wepy from "wepy"
+import logchild from "../components/logchild"
+import twoway from "../components/twoway"
+export default class extends wepy.page {
+    config = {
+      navigationBarTitleText: 'logs'
+    }
+    components={
+        logchild,
+        twoway
+    }
+    data={
+        logData:"我是日志！",
+        parentTitle: 'p-title',
+        num:10,
+        log:"我是log页面"
+    }
+    methods={
+        clickLog(){
+            // this.setData({ 
+            //     log:"log!!!"
+            // });
+            setTimeout(() => {
+                this.log = "log!!!!";  //
+                this.$apply();
+            }, 2000);
+        }
+    }
+}
+</script>
+

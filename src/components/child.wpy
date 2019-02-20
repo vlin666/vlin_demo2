@@ -1,0 +1,18 @@
+<template>
+    <view>
+        <view>
+          id:{{abc.id}}
+        </view>
+        <view>
+          title:{{abc.title}}
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class extends wepy.component{
+    
+}
+</script>
+

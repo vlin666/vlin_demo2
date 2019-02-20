@@ -1,0 +1,29 @@
+<template>
+    <view>
+        other-child
+        <view>
+            other:{{other}}
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class extends wepy.component{
+    props={
+        other:{
+            type:String,
+            twoWay:true
+        }
+    }
+    onLoad(){
+        // this.other = "other-child-change!";
+        // this.$apply();
+        // console.log(this.$parent.otherData)
+    
+        this.$parent.otherData = "other-parent-change!";
+        this.$parent.$apply();
+        console.log(this.other);
+    }
+}
+</script>

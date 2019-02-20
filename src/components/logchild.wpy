@@ -1,0 +1,15 @@
+<template>
+    <view>
+        我是子组件logchild {{title}}
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class extends wepy.component{
+    props={
+      title:String
+    }
+}
+</script>
+

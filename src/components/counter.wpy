@@ -1,0 +1,53 @@
+<style lang="less">
+  .counter {
+    text-align: left;
+    font-size: 12px;
+  }
+  .count {
+    font-size: 18px;
+    font-weight: bold;
+    &.red {
+      color: red;
+    }
+    &.green {
+      color: green;
+    }
+  }
+</style>
+<template>
+  <view class="counter">
+    <button @tap="plus" size="mini">  +  </button>
+    <button @tap="minus" size="mini">  -  </button>
+    <text class="count" :class="{red: num >= 5, green: num < 5}"> {{num}} </text>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Counter extends wepy.component {
+    data = {
+      num:0
+    }
+
+    //避免组件数据问题共享，data必须以函数返回对象的形式
+    //组件中data是以什么形式存储的呀？ 为啥，说一下嘛
+   
+
+    events = {
+      
+    }
+
+    watch = {
+      
+    }
+
+    methods = {
+      plus () {
+        this.num++
+      },
+      minus () {
+        this.num--;
+      }
+    }
+  }
+</script>

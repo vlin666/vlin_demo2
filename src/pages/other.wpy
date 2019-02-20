@@ -1,0 +1,48 @@
+<template>
+    <view>
+        <view>
+            <otherChild :other.sync="otherData"></otherChild>
+        </view>
+        <view>
+            子组件通信：
+            <tongxin></tongxin>
+        </view>
+        <view @tap="clickOther">
+            other.wpy
+        </view>
+    </view>
+</template>
+<script>
+import wepy from "wepy"
+import otherChild from "@/components/other-child"
+import tongxin from "@/components/tongxin"
+export default class extends wepy.page{
+    config = {
+      navigationBarTitleText: 'other'
+    }
+    methods={
+        clickOther(){
+            //广播
+            this.$broadcast("otherparent:click",1,1);
+            //调用子组件tongxin的getTongxinInfo
+            this.$invoke('tongxin', 'getTongxinInfo',1,2);
+        }
+    }
+    onLoad(){
+        
+    }
+    components={
+        otherChild,
+        tongxin
+    }
+    data={
+        otherData:"otherData"
+    }
+    events={
+        "tonxin:click":(a,b,$event)=>{
+            //30 _defalut recive tongxin:clink from tonxin
+            console.log((a+b),`${this.$name} receive ${$event.name} from ${$event.source.$name}`);
+        }
+    }
+}
+</script>

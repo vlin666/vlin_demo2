@@ -1,0 +1,70 @@
+<style lang="less">
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+</style>
+<template>
+  <view class="container">
+    <counter1></counter1>
+    <counterTwo></counterTwo>
+    <view>
+      <repeat for="{{list}}" key="index">
+        <child :abc="item"></child>
+      </repeat>
+    </view>
+    <view>
+      plus:{{aPlus}}
+    </view>
+  </view>
+</template>
+  
+<script>
+  import wepy from 'wepy'
+  import counter from "../components/counter"
+  import child from "@/components/child"
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '首页'
+    }
+    components = {
+      //为两个相同组件的不同实例分配不同的组件ID，从而避免数据同步变化的问题
+      counter1:counter,
+      counterTwo:counter,
+      child
+    }
+    data = {
+      list: [{id: 1, title: 'title1'}, {id: 2, title: 'title2'}],
+      a:1
+    }
+
+    computed = {
+      aPlus () {
+            return this.a + 1
+        }
+    }
+
+    methods = {
+      
+    }
+
+    events = {
+      
+    }
+
+    onLoad() {
+      //console.log("计算属性："+this.aPlus)
+    }
+  }
+</script>
